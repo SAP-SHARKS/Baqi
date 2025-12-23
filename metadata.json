@@ -1,0 +1,8 @@
+{
+  "name": "Baqi - Islamic Digital Legacy Platform",
+  "description": "The first Islamic digital legacy platform. Prepare your wasiyyah, schedule messages for loved ones, and honor the departed with sadaqah jariyah. Features an AI Legacy Assistant to help guide you through the process of preserving your spiritual and worldly affairs.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

@@ -5,8 +5,8 @@ interface SadaqahCardProps {
 }
 
 const SadaqahCard: React.FC<SadaqahCardProps> = ({ campaignId }) => {
-  // Updated URL format to support newer v4 campaigns
-  const embedUrl = `https://www.launchgood.com/v4/widget/${campaignId}`;
+  // Use the standard script URL which is the most widely supported
+  const embedUrl = `https://www.launchgood.com/scripts/widget.php?id=${campaignId}&type=standard`;
 
   return (
     <div className="rounded-[2rem] bg-teal-900 p-6 text-white shadow-2xl relative overflow-hidden group">
@@ -17,17 +17,17 @@ const SadaqahCard: React.FC<SadaqahCardProps> = ({ campaignId }) => {
         </div>
         
         <p className="text-teal-100 text-sm mb-6 leading-relaxed font-medium">
-          In lieu of flowers, the family requests your contribution to this urgent cause in his memory.
+          In memory of the deceased, the family requests your contribution to this cause.
         </p>
 
-        <div className="overflow-hidden rounded-2xl bg-white shadow-inner min-h-[550px] relative">
+        <div className="overflow-hidden rounded-2xl bg-white shadow-inner min-h-[480px]">
           <iframe 
             src={embedUrl}
             width="100%" 
-            height="550px" 
+            height="480px" 
             frameBorder="0" 
             scrolling="no"
-            className="rounded-xl relative z-10"
+            className="rounded-xl"
             title="LaunchGood Campaign"
           ></iframe>
         </div>

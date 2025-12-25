@@ -25,6 +25,13 @@ const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, slot: keyof t
     setHeroImages(prev => ({ ...prev, [slot]: url }));
   }
 };
+
+
+const removeImage = (e: React.MouseEvent, slot: keyof typeof heroImages) => {
+  e.preventDefault(); // Prevents the upload window from opening
+  e.stopPropagation(); // Prevents the click from reaching the parent label
+  setHeroImages(prev => ({ ...prev, [slot]: null }));
+};
   
   // Smooth scroll function with offset for sticky nav
   const scrollToSection = (id: TabType) => {

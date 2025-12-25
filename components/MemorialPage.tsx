@@ -17,16 +17,7 @@ const [heroImages, setHeroImages] = React.useState({
   thumb4: null as string | null,
 });
 
-{/* PASTE this inside the labels, right before the </div> that holds the "Upload" text */}
-{heroImages[slot as keyof typeof heroImages] && (
-  <button 
-    onClick={(e) => removeImage(e, slot as keyof typeof heroImages)}
-    className="absolute top-2 right-2 w-8 h-8 bg-red-600/80 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow-lg z-20 transition-all"
-    title="Remove Photo"
-  >
-    ✕
-  </button>
-)}
+
 const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, slot: keyof typeof heroImages) => {
   const file = e.target.files?.[0];
   if (file) {

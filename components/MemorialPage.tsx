@@ -329,11 +329,82 @@ const EventsTab: React.FC<EventsTabProps> = ({ rsvpOpen, setRsvpOpen }) => {
   );
 };
 
-const TimelineTab: React.FC = () => (
-  <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-12 text-center font-bold">
-    Timeline Section
-  </div>
-);
+const TimelineTab: React.FC = () => {
+  const milestones = [
+    { 
+      date: 'Dec 13, 1943', 
+      title: 'Born in Dhaka', 
+      description: 'Muhammad was born to a family of scholars in the heart of Bangladesh.',
+      icon: '👶'
+    },
+    { 
+      date: 'Aug 1968', 
+      title: 'Moved to USA', 
+      description: 'Arrived in Denver, CO to pursue a degree in Engineering and help build the local community.',
+      icon: '✈️'
+    },
+    { 
+      date: 'May 1972', 
+      title: 'Married Amina', 
+      description: 'Beginning a 52-year journey of love, faith, and partnership.',
+      icon: '💍'
+    },
+    { 
+      date: 'June 1985', 
+      title: 'Founded Al-Noor School', 
+      description: 'Dedicated his weekends to teaching Quran and Arabic to the youth.',
+      icon: '📖'
+    },
+    { 
+      date: 'Oct 1, 2024', 
+      title: 'Returned to His Lord', 
+      description: 'Passed away peacefully surrounded by family. May Allah grant him Firdaws.',
+      icon: '✨'
+    },
+  ];
+
+  return (
+    <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-8 md:p-12">
+      <div className="flex justify-between items-center mb-12">
+        <h2 className="text-3xl font-serif font-bold text-stone-900">Life Journey</h2>
+        <button className="text-teal-800 font-bold text-sm hover:underline">+ Add Milestone</button>
+      </div>
+
+      <div className="relative">
+        {/* Vertical Line */}
+        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-stone-100"></div>
+
+        <div className="space-y-12">
+          {milestones.map((item, index) => (
+            <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+              
+              {/* Timeline Dot/Icon */}
+              <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-teal-800 z-10 shadow-sm">
+                <span className="text-sm">{item.icon}</span>
+              </div>
+
+              {/* Content Card */}
+              <div className="ml-12 md:ml-0 md:w-1/2 md:px-8 w-full">
+                <div className={`p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow bg-stone-50/50 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                  <span className="text-xs font-black text-teal-800 uppercase tracking-widest block mb-1">
+                    {item.date}
+                  </span>
+                  <h3 className="text-xl font-bold text-stone-900 mb-2">{item.title}</h3>
+                  <p className="text-stone-600 leading-relaxed text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Spacer for Desktop */}
+              <div className="hidden md:block md:w-1/2"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FavoritesTab: React.FC = () => (
   <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-12 text-center font-bold">

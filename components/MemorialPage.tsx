@@ -75,22 +75,47 @@ const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, slot: keyof t
       <div className="bg-white">
         <div className="max-w-6xl mx-auto p-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:h-[500px]">
-            <div className="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg bg-stone-100 aspect-square md:aspect-auto">
-              <PlaceholderImage type="profile" className="w-full h-full" />
-            </div>
-            <div className="hidden md:block col-span-1 row-span-1 rounded-xl overflow-hidden shadow-md bg-stone-100">
-              <PlaceholderImage type="family1" className="w-full h-full" />
-            </div>
-            <div className="hidden md:block col-span-1 row-span-1 rounded-xl overflow-hidden shadow-md bg-stone-100">
-              <PlaceholderImage type="mosque" className="w-full h-full" />
-            </div>
-            <div className="hidden md:block col-span-1 row-span-1 rounded-xl overflow-hidden shadow-md bg-stone-100">
-              <PlaceholderImage type="family2" className="w-full h-full" />
-            </div>
-            <div className="hidden md:block col-span-1 row-span-1 rounded-xl overflow-hidden shadow-md bg-stone-100">
-              <PlaceholderImage type="quran" className="w-full h-full" />
-            </div>
-          </div>
+  {/* Main Profile Photo Slot */}
+  <label className="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg bg-stone-100 cursor-pointer relative group">
+    <input 
+      type="file" 
+      className="hidden" 
+      accept="image/*" 
+      onChange={(e) => handleImageUpload(e, 'main')} 
+    />
+    {heroImages.main ? (
+      <img src={heroImages.main} className="w-full h-full object-cover" alt="Main" />
+    ) : (
+      <PlaceholderImage type="profile" className="w-full h-full" />
+    )}
+    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+      <span className="text-white font-bold text-sm bg-teal-900/80 px-4 py-2 rounded-full shadow-lg">Change Main Photo</span>
+    </div>
+  </label>
+
+  {/* Smaller Thumbnail Slots (Thumb 1 - 4) */}
+  {(['thumb1', 'thumb2', 'thumb3', 'thumb4'] as const).map((slot, i) => {
+    const defaultTypes: ("family1" | "mosque" | "family2" | "quran")[] = ["family1", "mosque", "family2", "quran"];
+    return (
+      <label key={slot} className="hidden md:block col-span-1 row-span-1 rounded-xl overflow-hidden shadow-md bg-stone-100 cursor-pointer relative group">
+        <input 
+          type="file" 
+          className="hidden" 
+          accept="image/*" 
+          onChange={(e) => handleImageUpload(e, slot)} 
+        />
+        {heroImages[slot] ? (
+          <img src={heroImages[slot]!} className="w-full h-full object-cover" alt={`Gallery ${i}`} />
+        ) : (
+          <PlaceholderImage type={defaultTypes[i]} className="w-full h-full" />
+        )}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-bold uppercase tracking-widest">
+          Upload
+        </div>
+      </label>
+    );
+  })}
+</div>
 
           <div className="mt-8 mb-4 px-2 md:px-0">
             <p className="text-sm font-bold text-teal-800 uppercase tracking-widest mb-1">In Loving Memory of</p>

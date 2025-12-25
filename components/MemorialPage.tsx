@@ -121,7 +121,7 @@ const removeImage = (e: React.MouseEvent, slot: keyof typeof heroImages) => {
           accept="image/*" 
           onChange={(e) => handleImageUpload(e, slot)} 
         />
-        // Around Line 110
+        
 {heroImages[slot] ? (
   <div className="relative w-full h-full">
     <img src={heroImages[slot]!} className="w-full h-full object-cover" alt={`Gallery ${i}`} />

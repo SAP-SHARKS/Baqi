@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ScheduledMessage, ActionItem } from '../types';
 import AIChatPanel from './AIChatPanel';
@@ -19,7 +18,8 @@ const DashboardPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-100 p-6 md:p-10 pt-20">
+    // FIXED: Changed pt-20 to pt-24 for better spacing (96px instead of 80px)
+    <div className="min-h-screen bg-stone-100 p-6 md:p-10 pt-24">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
         
         {/* Main Content */}
@@ -120,7 +120,8 @@ const DashboardPage: React.FC = () => {
               </span>
             </div>
           ) : (
-            <div className="sticky top-20">
+            // FIXED: Changed top-20 to top-24 to match new padding
+            <div className="sticky top-24">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-black uppercase tracking-widest text-stone-400">Assistant Active</span>
                 <button onClick={() => setShowAI(false)} className="text-stone-400 hover:text-stone-600">✕</button>

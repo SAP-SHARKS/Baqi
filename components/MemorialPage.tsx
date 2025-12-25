@@ -8,6 +8,24 @@ const MemorialPage: React.FC = () => {
   const [rsvpOpen, setRsvpOpen] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<TabType>('about');
 
+// Inside MemorialPage component, near line 10
+const [heroImages, setHeroImages] = React.useState({
+  main: null as string | null,
+  thumb1: null as string | null,
+  thumb2: null as string | null,
+  thumb3: null as string | null,
+  thumb4: null as string | null,
+});
+
+const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, slot: keyof typeof heroImages) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    // Generates a temporary URL for previewing the local file
+    const url = URL.createObjectURL(file);
+    setHeroImages(prev => ({ ...prev, [slot]: url }));
+  }
+};
+  
   // Smooth scroll function with offset for sticky nav
   const scrollToSection = (id: TabType) => {
     const element = document.getElementById(id);

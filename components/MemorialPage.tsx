@@ -308,43 +308,45 @@ const MemoriesTab: React.FC = () => (
 );
 
 
-// Around Line 260 in MemorialPage.tsx
 const SadaqahTab: React.FC = () => (
   <div className="space-y-8">
     <div className="bg-white rounded-[2.5rem] border border-stone-200 shadow-sm p-8 md:p-12 relative overflow-hidden">
       <div className="max-w-2xl mx-auto text-center">
         <span className="inline-block bg-amber-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-2 rounded-full mb-8 shadow-md">
-          Sadaqah Jariyah Portal
+          Family's Sadaqah Jariyah Project
         </span>
         
-        <h3 className="font-serif text-3xl text-stone-900 mb-4">Together Let's Educate & Care for Orphans</h3>
+        <h3 className="font-serif text-3xl text-stone-900 mb-4">Orphan Education & Care</h3>
         <p className="text-stone-600 leading-relaxed mb-10 text-lg">
-          Donate directly on this page. Your contribution is processed securely by LaunchGood and is dedicated as a perpetual charity for Muhammad Rahman.
+          Donate on this page to support this verified campaign. Your contribution is processed 
+          securely by LaunchGood as an ongoing charity for Muhammad Rahman.
         </p>
 
-        {/* Inline Payment Widget - The "Seamless" Approach */}
-        <div className="rounded-3xl border border-stone-100 bg-white p-1 shadow-2xl overflow-hidden min-h-[550px]">
+        {/* The Premium Inline Widget Container */}
+        <div className="rounded-3xl border border-stone-100 bg-stone-50 p-1 shadow-2xl overflow-hidden min-h-[600px] relative">
           <iframe 
-            src="https://www.launchgood.com/v4/widget/317436" 
+            src="https://www.launchgood.com/scripts/widget.php?id=317436&type=standard" 
             width="100%" 
-            height="550px" 
+            height="600px" 
             frameBorder="0" 
             scrolling="no"
-            className="rounded-2xl"
+            className="rounded-2xl bg-white"
             title="Sadaqah Jariyah Donation"
+            allow="payment"
           ></iframe>
         </div>
         
         <div className="mt-8 flex items-center justify-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
           <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest">
-            Direct Secure Connection to LaunchGood Verified Campaign
+            Secure Inline Payment via LaunchGood
           </p>
         </div>
       </div>
     </div>
   </div>
 );
+
 
 const ObituaryTab: React.FC = () => (
   <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-12">

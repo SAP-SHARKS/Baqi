@@ -307,30 +307,38 @@ const MemoriesTab: React.FC = () => (
   </div>
 );
 
+
 const SadaqahTab: React.FC = () => (
   <div className="space-y-8">
-    <div className="bg-white rounded-[2.5rem] border-4 border-amber-500 shadow-2xl p-12 relative overflow-hidden text-center">
-      <span className="inline-block bg-amber-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-2 rounded-full mb-8 shadow-lg">
-        FAMILY'S SADAQAH CHOICE
-      </span>
-      <h3 className="font-black text-3xl text-stone-900 mb-4 uppercase tracking-tighter">Educate and Care for Orphans</h3>
-      <p className="text-stone-600 leading-relaxed text-xl mb-10">
-        Honor Muhammad's legacy by supporting orphaned children. This <strong>Sadaqah Jariyah</strong> will provide education and care on his behalf.
-      </p>
-      
-      {/* Updated Button to Link to LaunchGood */}
-      <a 
-        href="https://www.launchgood.com/v4/campaign/together_lets_educate_and_care_for_orphans" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="block w-full bg-teal-800 text-white py-5 rounded-2xl font-black text-xl uppercase tracking-widest hover:bg-teal-900 shadow-2xl transform hover:-translate-y-1 transition-all no-underline"
-      >
-        Donate on his behalf →
-      </a>
-      
-      <p className="mt-4 text-xs text-stone-400 font-bold uppercase tracking-widest">
-        Secure donation via LaunchGood
-      </p>
+    <div className="bg-white rounded-[2.5rem] border border-stone-200 shadow-sm p-8 md:p-12 relative overflow-hidden">
+      <div className="max-w-2xl mx-auto text-center">
+        <span className="inline-block bg-amber-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-2 rounded-full mb-8 shadow-md">
+          Family's Sadaqah Jariyah Project
+        </span>
+        
+        <h3 className="font-serif text-3xl text-stone-900 mb-4">Together Let's Educate & Care for Orphans</h3>
+        <p className="text-stone-600 leading-relaxed mb-10">
+          Give a gift that continues to benefit Muhammad (may Allah have mercy on him). 
+          Your donation goes directly to the verified campaign via LaunchGood.
+        </p>
+
+        {/* The Inline Payment Widget */}
+        <div className="rounded-3xl border border-stone-100 bg-stone-50 p-1 shadow-inner overflow-hidden">
+          <iframe 
+            src="https://www.launchgood.com/v4/widget/317436" 
+            width="100%" 
+            height="550px" 
+            frameBorder="0" 
+            scrolling="no"
+            className="rounded-2xl"
+            title="Sadaqah Jariyah Donation"
+          ></iframe>
+        </div>
+        
+        <p className="mt-6 text-[10px] font-black text-stone-400 uppercase tracking-widest">
+          Secured and Verified by LaunchGood
+        </p>
+      </div>
     </div>
   </div>
 );

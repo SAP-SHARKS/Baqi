@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import PlaceholderImage from './PlaceholderImage';
+import SadaqahCard from './SadaqahCard';
 
 type TabType = 'about' | 'memories' | 'sadaqah' | 'obituary' | 'events' | 'timeline' | 'favorites';
 
@@ -487,22 +488,7 @@ const FavoritesTab: React.FC = () => (
 );
 
 const Sidebar: React.FC = () => (
-  <>
-    <div className="bg-teal-900 rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden group">
-      <div className="absolute inset-0 bg-pattern opacity-10" />
-      <div className="flex items-center gap-4 mb-6 relative z-10">
-        <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl">💝</div>
-        <h3 className="font-black text-2xl uppercase tracking-tighter">Everlasting Sadaqah</h3>
-      </div>
-      <p className="text-teal-100 text-lg font-medium mb-8 leading-relaxed relative z-10">In lieu of flowers, the family requests your contribution to his chosen water project.</p>
-      <div className="mb-8 relative z-10">
-        <p className="text-5xl font-black tracking-tighter text-amber-400 mb-1">$11,910</p>
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Raised by 67 donors</p>
-      </div>
-      <button className="w-full bg-amber-500 text-teal-950 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 shadow-xl transition-all relative z-10">
-        Give Sadaqah Jariyah →
-      </button>
-    </div>
+ <SadaqahCard campaignId="12345" />
     
     <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-8">
       <h3 className="font-black text-xl mb-4 uppercase tracking-tight">Stay Connected</h3>

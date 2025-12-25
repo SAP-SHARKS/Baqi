@@ -345,7 +345,7 @@ const FavoritesTab: React.FC = () => (
 
 const Sidebar: React.FC = () => (
   <div className="space-y-8">
-    <SadaqahCard campaignId="170751" />
+    <SadaqahCard campaignId="317436" />
 
     {/* Islamic Resources Section */}
     <div className="bg-emerald-50 rounded-3xl border border-emerald-100 shadow-sm p-8">

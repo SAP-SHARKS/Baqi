@@ -92,10 +92,19 @@ const removeImage = (e: React.MouseEvent, slot: keyof typeof heroImages) => {
       onChange={(e) => handleImageUpload(e, 'main')} 
     />
     {heroImages.main ? (
-      <img src={heroImages.main} className="w-full h-full object-cover" alt="Main" />
-    ) : (
-      <PlaceholderImage type="profile" className="w-full h-full" />
-    )}
+  <div className="relative w-full h-full">
+    <img src={heroImages.main} className="w-full h-full object-cover" alt="Main" />
+    {/* REMOVE BUTTON */}
+    <button 
+      onClick={(e) => removeImage(e, 'main')}
+      className="absolute top-4 right-4 w-10 h-10 bg-red-600/90 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow-xl z-30 transition-all border-2 border-white"
+    >
+      ✕
+    </button>
+  </div>
+) : (
+  <PlaceholderImage type="profile" className="w-full h-full" />
+)}
     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
       <span className="text-white font-bold text-sm bg-teal-900/80 px-4 py-2 rounded-full shadow-lg">Change Main Photo</span>
     </div>

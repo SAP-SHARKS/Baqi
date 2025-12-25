@@ -312,35 +312,37 @@ const SadaqahTab: React.FC = () => (
   <div className="space-y-8">
     <div className="bg-white rounded-[2.5rem] border border-stone-200 shadow-sm p-8 md:p-12 relative overflow-hidden">
       <div className="max-w-2xl mx-auto text-center">
-        <span className="inline-block bg-amber-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-2 rounded-full mb-8 shadow-md">
-          Family's Sadaqah Jariyah Project
-        </span>
+        <div className="w-20 h-20 bg-amber-100 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-8 shadow-inner">
+          🕌
+        </div>
         
         <h3 className="font-serif text-3xl text-stone-900 mb-4">Orphan Education & Care</h3>
         <p className="text-stone-600 leading-relaxed mb-10 text-lg">
-          Donate on this page to support this verified campaign. Your contribution is processed 
-          securely by LaunchGood as an ongoing charity for Muhammad Rahman.
+          Support this project in the name of Muhammad Rahman. Your gift will be processed through 
+          our verified partnership with <strong>LaunchGood</strong>.
         </p>
 
-        {/* The Premium Inline Widget Container */}
-        <div className="rounded-3xl border border-stone-100 bg-stone-50 p-1 shadow-2xl overflow-hidden min-h-[600px] relative">
-          <iframe 
-            src="https://www.launchgood.com/scripts/widget.php?id=317436&type=standard" 
-            width="100%" 
-            height="600px" 
-            frameBorder="0" 
-            scrolling="no"
-            className="rounded-2xl bg-white"
-            title="Sadaqah Jariyah Donation"
-            allow="payment"
-          ></iframe>
+        {/* This creates a 'Premium' checkout-style card */}
+        <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100 mb-10">
+          <div className="flex justify-between items-center mb-6">
+            <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest">Ongoing Charity</span>
+            <span className="text-emerald-600 font-bold text-sm">Verified Campaign ✓</span>
+          </div>
+          
+          <a 
+            href="https://www.launchgood.com/v4/campaign/together_lets_educate_and_care_for_orphans" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block w-full bg-teal-800 text-white py-5 rounded-2xl font-black text-xl uppercase tracking-widest hover:bg-teal-900 shadow-xl transition-all no-underline"
+          >
+            Confirm & Donate →
+          </a>
         </div>
         
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-          <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest">
-            Secure Inline Payment via LaunchGood
-          </p>
+        <div className="flex items-center justify-center gap-6 opacity-40 grayscale">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" className="h-4" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-4" />
         </div>
       </div>
     </div>

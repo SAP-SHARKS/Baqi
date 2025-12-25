@@ -309,25 +309,28 @@ const MemoriesTab: React.FC = () => (
 
 const SadaqahTab: React.FC = () => (
   <div className="space-y-8">
-    <div className="bg-white rounded-[2.5rem] border-4 border-amber-500 shadow-2xl p-12 relative overflow-hidden text-center md:text-left">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full -mr-32 -mt-32" />
+    <div className="bg-white rounded-[2.5rem] border-4 border-amber-500 shadow-2xl p-12 relative overflow-hidden text-center">
       <span className="inline-block bg-amber-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-2 rounded-full mb-8 shadow-lg">
         FAMILY'S SADAQAH CHOICE
       </span>
-      <div className="flex flex-col md:flex-row items-center gap-10 mb-8">
-        <div className="w-24 h-24 rounded-3xl bg-teal-50 flex items-center justify-center text-5xl flex-shrink-0 shadow-inner">
-          <PlaceholderImage type="water" className="w-16 h-16" />
-        </div>
-        <div className="flex-1">
-          <h3 className="font-black text-3xl text-stone-900 mb-4 uppercase tracking-tighter">Water Well in Bangladesh</h3>
-          <p className="text-stone-600 leading-relaxed text-xl">
-            Muhammad's final wish to bring clean water to his ancestral village. This is a form of <strong>Sadaqah Jariyah</strong>.
-          </p>
-        </div>
-      </div>
-      <button className="w-full bg-teal-800 text-white py-5 rounded-2xl font-black text-xl uppercase tracking-widest hover:bg-teal-900 shadow-2xl transition-all">
-        Donate Now
-      </button>
+      <h3 className="font-black text-3xl text-stone-900 mb-4 uppercase tracking-tighter">Educate and Care for Orphans</h3>
+      <p className="text-stone-600 leading-relaxed text-xl mb-10">
+        Honor Muhammad's legacy by supporting orphaned children. This <strong>Sadaqah Jariyah</strong> will provide education and care on his behalf.
+      </p>
+      
+      {/* Updated Button to Link to LaunchGood */}
+      <a 
+        href="https://www.launchgood.com/v4/campaign/together_lets_educate_and_care_for_orphans" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="block w-full bg-teal-800 text-white py-5 rounded-2xl font-black text-xl uppercase tracking-widest hover:bg-teal-900 shadow-2xl transform hover:-translate-y-1 transition-all no-underline"
+      >
+        Donate on his behalf →
+      </a>
+      
+      <p className="mt-4 text-xs text-stone-400 font-bold uppercase tracking-widest">
+        Secure donation via LaunchGood
+      </p>
     </div>
   </div>
 );
@@ -445,9 +448,14 @@ const Sidebar: React.FC = () => (
         <p className="text-5xl font-black tracking-tighter text-amber-400 mb-1">$11,910</p>
         <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Raised by 67 donors</p>
       </div>
-      <button className="w-full bg-amber-500 text-teal-950 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 transition-all relative z-10">
-        Give Sadaqah →
-      </button>
+      <a 
+  href="https://www.launchgood.com/v4/campaign/together_lets_educate_and_care_for_orphans" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="block text-center w-full bg-amber-500 text-teal-950 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 shadow-xl transition-all relative z-10 no-underline"
+>
+  Give Sadaqah Jariyah →
+</a>
     </div>
 
     <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-8">

@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import FeaturesPage from './components/FeaturesPage';
 import DashboardPage from './components/DashboardPage';
 import MemorialPage from './components/MemorialPage';
+import MemorialList from './components/MemorialList';
 import { AppView } from './types';
 import SadaqahCard from './components/SadaqahCard';
 
@@ -59,6 +60,9 @@ const App: React.FC = () => {
         {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
         {currentView === AppView.DASHBOARD && <DashboardPage />}
         {currentView === AppView.MEMORIAL && <MemorialPage />}
+        {currentView === AppView.LANDING && <LandingPage onNavigate={setCurrentView} />}
+        {currentView === AppView.MEMORIAL_LIST && <MemorialList />}
+        {currentView === AppView.MEMORIAL_DEMO && <MemorialPage />}
       </main>
     </div>
   );

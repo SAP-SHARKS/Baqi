@@ -13,7 +13,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       {/* Hero */}
       <section className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-br from-stone-50 to-stone-100 relative">
         <div className="absolute inset-0 bg-pattern opacity-10" />
-        
+
         <div className="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <p className="text-lg text-teal-800 font-serif mb-4 italic">إِنَّا لِلَّٰهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
@@ -22,31 +22,31 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               <span className="text-teal-800">Preserved with Purpose.</span>
             </h1>
             <p className="text-xl text-stone-600 mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
-              The first Islamic digital legacy platform. Prepare your wasiyyah, 
+              The first Islamic digital legacy platform. Prepare your wasiyyah,
               schedule messages for loved ones, and honor the departed with sadaqah jariyah.
             </p>
             <div className="flex gap-4 justify-center lg:justify-start flex-wrap">
-              <button 
+              <button
                 onClick={() => onNavigate(AppView.DASHBOARD)}
                 className="bg-teal-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-900 transition-all hover:scale-105 shadow-lg"
               >
                 Begin Your Legacy
               </button>
-              <button 
+              <button
                 onClick={() => onNavigate(AppView.MEMORIAL)}
                 className="border-2 border-teal-800 text-teal-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition-all shadow-md"
               >
                 View Memorial Demo
               </button>
             </div>
-            
+
             <div className="flex gap-8 justify-center lg:justify-start mt-12 flex-wrap text-sm font-medium text-stone-500 uppercase tracking-widest">
               <span className="flex items-center gap-2">🕌 Scholar Reviewed</span>
               <span className="flex items-center gap-2">🔒 End-to-End Encrypted</span>
               <span className="flex items-center gap-2">📜 Sharia Compliant</span>
             </div>
           </div>
-          
+
           <div className="hidden lg:block relative">
             <div className="relative z-10 animate-fade-in-up">
               <PlaceholderImage type="mosque" className="w-full rounded-3xl shadow-2xl border-8 border-white" />
@@ -105,10 +105,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-teal-800 text-sm font-bold uppercase tracking-[0.2em] mb-4">Your Spiritual Journey</p>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">How Baqi Works</h2>
-          
+
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-stone-200 hidden md:block" />
-            
+
             <div className="space-y-24">
               {[
                 {
@@ -157,9 +157,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                       <p className="text-stone-600 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-                  
+
                   <div className="hidden md:flex w-4 h-4 bg-teal-800 rounded-full z-10 shadow-[0_0_0_8px_rgba(13,92,77,0.1)]" />
-                  
+
                   <div className="flex-1 hidden md:block">
                     <div className={`${item.side === 'right' ? 'mr-auto' : 'ml-auto'} w-64 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500`}>
                       <PlaceholderImage type={item.image as any} className="w-full rounded-2xl shadow-lg" />
@@ -179,7 +179,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         </div>
         <div className="max-w-3xl mx-auto relative z-10">
           <blockquote className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-8">
-            "When a person dies, their deeds come to an end except for three: 
+            "When a person dies, their deeds come to an end except for three:
             Sadaqah Jariyah (everlasting charity), beneficial knowledge, or a righteous child who prays for them."
           </blockquote>
           <cite className="text-amber-400 font-bold text-lg">— Prophet Muhammad ﷺ (Sahih Muslim)</cite>
@@ -191,18 +191,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Your Legacy Awaits.</h2>
           <p className="text-xl text-stone-600 mb-12 max-w-2xl mx-auto">Join thousands of Muslims ensuring their affairs are in order and their legacy is one of purpose.</p>
-          
+
           <div className="bg-stone-50 p-12 rounded-3xl shadow-2xl border border-stone-200 max-w-xl mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
+            <input
+              type="email"
+              placeholder="Enter your email"
               className="w-full p-4 border border-stone-300 rounded-xl mb-4 text-center text-lg focus:ring-2 focus:ring-teal-500 outline-none"
             />
-            <button 
-              onClick={() => onNavigate(AppView.DASHBOARD)}
-              className="w-full bg-teal-800 text-white py-5 rounded-xl text-xl font-bold hover:bg-teal-900 shadow-lg transform hover:-translate-y-1 transition-all"
+            <button
+              onClick={() => onNavigate(AppView.MEMORIAL_LIST)} // Change from MEMORIAL to MEMORIAL_LIST
+              className="px-8 py-4 border-2 border-teal-800 text-teal-800 rounded-2xl font-black uppercase tracking-widest hover:bg-teal-50 transition-all"
             >
-              Get Started for Free
+              View Memorial Demo
             </button>
             <p className="text-sm text-stone-500 mt-6">Secure • No credit card required • Join 10k+ families</p>
           </div>

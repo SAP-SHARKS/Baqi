@@ -1,10 +1,10 @@
 
 export enum AppView {
-  LANDING = 'landing',
-  FEATURES = 'features',
-  DASHBOARD = 'dashboard',
-  MEMORIAL = 'memorial',
-  AI_ASSISTANT = 'assistant'
+  LANDING = 'LANDING',
+  FEATURES = 'FEATURES',
+  DASHBOARD = 'DASHBOARD',
+  MEMORIAL_LIST = 'MEMORIAL_LIST', // ADD THIS
+  MEMORIAL_DEMO = 'MEMORIAL_DEMO'  // ADD THIS
 }
 
 export interface Message {

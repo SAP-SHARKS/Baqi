@@ -9,6 +9,7 @@ import MemorialList from './components/MemorialList'
 
 const App: React.FC = () => {
 const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);
+const [selectedProfile, setSelectedProfile] = useState<any>(null);
 
 return (
 <div className="min-h-screen bg-stone-50 selection:bg-teal-800 selection:text-white">

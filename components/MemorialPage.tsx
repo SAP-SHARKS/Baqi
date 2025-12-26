@@ -3,7 +3,7 @@ import PlaceholderImage from './PlaceholderImage';
 
 type TabType = 'about' | 'memories' | 'sadaqah' | 'obituary' | 'events' | 'timeline' | 'favorites';
 
-const MemorialPage: React.FC<{ profile: any }> = ({ profile }) => {
+  const MemorialPage: React.FC<{ profile: any }> = ({ profile }) => {   if (!profile) return <div className="p-20 text-center">Loading...</div>;
   const [showShareModal, setShowShareModal] = useState(false);
   const [rsvpOpen, setRsvpOpen] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<TabType>('about');

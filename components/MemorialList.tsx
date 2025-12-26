@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 
 const MemorialList: React.FC<{ onSelectProfile: (profile: any) => void }> = ({ onSelectProfile }) => {
-  const [profiles, setProfiles] = React.useState<any[]>([]);
-  React.useEffect(() => {
+  const [profiles, setProfiles] = useState<any[]>([]);
+  useEffect(() => {
     const getProfiles = async () => {
       const { data } = await supabase.from('profiles').select('*').eq('is_public', true);
       if (data) setProfiles(data);
-    }; getProfiles();
-    }, []);
+    };
+    getProfiles();
+  }, []);
 
   return (
     <div className="min-h-screen bg-stone-50 p-8 pt-24">
@@ -30,7 +31,8 @@ const MemorialList: React.FC<{ onSelectProfile: (profile: any) => void }> = ({ o
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-xl text-stone-900">{profile.full_name}</h3>
-                <p className="text-stone-400 text-xs font-black uppercase tracking-widest mt-1">{profile.birth_date} - {profile.death_date}</p>
+                <p className="text-stone-400 text-xs font-black uppercase tracking-widest mt-1">{profile.birth_date} -
+                  {profile.death_date}</p>
               </div>
             </div>
           ))}

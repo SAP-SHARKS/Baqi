@@ -33,7 +33,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 Begin Your Legacy
               </button>
               <button
-                onClick={() => onNavigate(AppView.MEMORIAL)}
+                onClick={() => onNavigate(AppView.MEMORIAL_LIST)}
                 className="border-2 border-teal-800 text-teal-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition-all shadow-md"
               >
                 View Memorial Demo

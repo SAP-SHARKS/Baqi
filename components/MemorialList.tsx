@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 
 const MemorialList: React.FC<{ onSelectProfile: (profile: any) => void }> = ({ onSelectProfile }) => {

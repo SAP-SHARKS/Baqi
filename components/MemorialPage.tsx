@@ -3,7 +3,7 @@ import PlaceholderImage from './PlaceholderImage';
 
 type TabType = 'about' | 'memories' | 'sadaqah' | 'obituary' | 'events' | 'timeline' | 'favorites';
 
-const MemorialPage: React.FC = () => {
+const MemorialPage: React.FC<{ profile: any }> = ({ profile }) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [rsvpOpen, setRsvpOpen] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<TabType>('about');
@@ -146,21 +146,21 @@ const removeImage = (e: React.MouseEvent, slot: keyof typeof heroImages) => {
 
           <div className="mt-8 mb-4 px-2 md:px-0">
             <p className="text-sm font-bold text-teal-800 uppercase tracking-widest mb-1">In Loving Memory of</p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-stone-900 leading-tight">Muhammad Rahman</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-stone-900 leading-tight">{profile.full_name}</h1>
             
             <div className="flex flex-wrap gap-8 text-sm text-stone-600 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">🕯️</span>
                 <div>
                   <p className="text-[10px] font-black text-stone-400 uppercase tracking-tighter">Passed</p>
-                  <p className="font-bold text-stone-900">October 1, 2024</p>
+                  <p className="font-bold text-stone-900">{profile.death_date}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-2xl">🎂</span>
                 <div>
                   <p className="text-[10px] font-black text-stone-400 uppercase tracking-tighter">Born</p>
-                  <p className="font-bold text-stone-900">December 13, 1943</p>
+                  <p className="font-bold text-stone-900">{profile.birth_date}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

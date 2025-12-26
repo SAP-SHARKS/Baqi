@@ -25,7 +25,7 @@ onClick={() => setCurrentView(AppView.LANDING)}
 
 <div className="hidden md:flex gap-2 p-1 bg-stone-200/50 rounded-full">
 {[
-{ id: AppView.LANDING, label: 'Home' },
+{ id: AppView.LANDING, label: 'Your Home' },
 { id: AppView.FEATURES, label: 'Features' },
 { id: AppView.DASHBOARD, label: 'Dashboard' },
 { id: AppView.MEMORIAL, label: 'Memorial Demo' },

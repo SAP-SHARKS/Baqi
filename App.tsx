@@ -59,7 +59,7 @@ currentView === view.id
 {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
 {currentView === AppView.DASHBOARD && <DashboardPage />}
 {currentView === AppView.MEMORIAL_LIST && <MemorialList onSelectProfile={() => setCurrentView(AppView.MEMORIAL_DEMO)} />}
-{currentView === AppView.MEMORIAL_DEMO && <MemorialPage />}
+{currentView === AppView.MEMORIAL_DEMO && <MemorialPage profile={selectedProfile} />}
 </main>
 </div>
 );

@@ -5,7 +5,7 @@ import FeaturesPage from './components/FeaturesPage';
 import DashboardPage from './components/DashboardPage';
 import MemorialPage from './components/MemorialPage';
 import { AppView } from './types';
-import SadaqahCard from './components/SadaqahCard';
+import MemorialList from './components/MemorialList'
 
 const App: React.FC = () => {
 const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);

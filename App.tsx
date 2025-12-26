@@ -28,7 +28,7 @@ onClick={() => setCurrentView(AppView.LANDING)}
 { id: AppView.LANDING, label: 'Your Home' },
 { id: AppView.FEATURES, label: 'Features' },
 { id: AppView.DASHBOARD, label: 'Dashboard' },
-{ id: AppView.MEMORIAL, label: 'Memorial Demo' },
+{ id: AppView.MEMORIAL_LIST, label: 'Memorials' },
 ].map(view => (
 <button
 key={view.id}
@@ -58,7 +58,8 @@ currentView === view.id
 {currentView === AppView.LANDING && <LandingPage onNavigate={setCurrentView} />}
 {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
 {currentView === AppView.DASHBOARD && <DashboardPage />}
-{currentView === AppView.MEMORIAL && <MemorialPage />}
+{currentView === AppView.MEMORIAL_LIST && <MemorialList onSelectProfile={() => setCurrentView(AppView.MEMORIAL_DEMO)} />}
+{currentView === AppView.MEMORIAL_DEMO && <MemorialPage />}
 </main>
 </div>
 );

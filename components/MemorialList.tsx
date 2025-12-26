@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MemorialList: React.FC = () => {
+const MemorialList: React.FC<{ onSelectProfile: () => void }> = ({ onSelectProfile }) => {
   const profiles = [
     { id: '1', name: 'Muhammad Rahman', dates: '1943 - 2024', image: 'profile' },
     { id: '2', name: 'Fatima Ali', dates: '1955 - 2023', image: 'family1' },
@@ -18,7 +18,10 @@ const MemorialList: React.FC = () => {
             <div key={profile.id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-xl transition-all group cursor-pointer">
               <div className="aspect-square bg-stone-100 relative">
                 <div className="absolute inset-0 bg-teal-900/10 group-hover:bg-transparent transition-colors" />
-                <button className="absolute bottom-4 right-4 bg-white/90 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                <button 
+                  onClick={onSelectProfile}
+                  className="absolute bottom-4 right-4 bg-white/90 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"
+                >
                   View Legacy →
                 </button>
               </div>

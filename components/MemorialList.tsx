@@ -23,7 +23,7 @@ const MemorialList: React.FC<{ onSelectProfile: (profile: any) => void }> = ({ o
               <div className="aspect-square bg-stone-100 relative">
                 <div className="absolute inset-0 bg-teal-900/10 group-hover:bg-transparent transition-colors" />
                 <button
-                  onClick={onSelectProfile}
+                  onClick={() => onSelectProfile(profile)}
                   className="absolute bottom-4 right-4 bg-white/90 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   View Legacy →

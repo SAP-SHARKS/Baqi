@@ -16,10 +16,18 @@ const App: React.FC = () => {
   const [selectedProfile, setSelectedProfile] = useState<any>(null);
 
   // New Auth State
-  const [session, setSession] = useState<any>(null);
-  const [profile, setProfile] = useState<any>(null); // To store the bio/location
-  const [loading, setLoading] = useState(true); // To prevent flickering
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
+ const [profile, setProfile] = useState<any>(null);
+const [loading, setLoading] = useState(true);
+
+const fetchProfile = async (userId: string) => {
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single();
+  setProfile(data);
+  setLoading(false); // Essential to stop the blank screen
+};
 
   // 2. LOGIC: The "Check Login" Effect
   useEffect(() => {

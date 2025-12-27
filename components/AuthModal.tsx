@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../supabaseClient'; // Ensure your client path is correct
+import { supabase } from '../services/supabaseClient'; // Ensure your client path is correct
 
 export const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;

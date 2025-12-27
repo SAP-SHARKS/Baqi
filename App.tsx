@@ -57,23 +57,15 @@ const App: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // 3. THE GATEKEEPER: This function decides if they can enter
-  const handleBeginLegacy = () => {
-    if (!session) {
-      setIsAuthOpen(true);
-    } else {
-      setCurrentView(AppView.DASHBOARD);
-    }
-  };
 
-  // 3. THE GATEKEEPER: This function decides if they can enter
-  const handleBeginLegacy = () => {
-    if (!session) {
-      setIsAuthOpen(true); // Stop! Show login popup
-    } else {
-      setCurrentView(AppView.DASHBOARD); // Pass! Go to Dashboard
-    }
-  };
+// 3. THE GATEKEEPER: This function decides if they can enter
+const handleBeginLegacy = () => {
+  if (!session) {
+    setIsAuthOpen(true); // Stop! Show login popup
+  } else {
+    setCurrentView(AppView.DASHBOARD); // Pass! Go to Dashboard
+  }
+};
   if (loading) return <div className="min-h-screen flex items-center justify-center font-serif text-teal-900">Preparing your legacy...</div>;
   return (
     <div className="min-h-screen bg-stone-50 selection:bg-teal-800 selection:text-white">

@@ -23,11 +23,17 @@ const App: React.FC = () => {
 
   // 2. LOGIC: The "Check Login" Effect
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session) fetchProfile(session.user.id);
-      else setLoading(false);
+  supabase.auth.onAuthStateChange((_event, session) => {
+    setSession(session);
+    if (session) {
+      fetchProfile(session.user.id);
+      // Ensure we switch away from Landing if they are already logged in
+      setCurrentView(AppView.DASHBOARD); 
+    } else {
+      setLoading(false);
+    }
     });
+    }, []);
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);

@@ -3,7 +3,7 @@ import { supabase } from '../supabaseClient';
 
 export const OnboardingForm = ({ user, onComplete }: { user: any; onComplete: () => void }) => {
   const [formData, setFormData] = useState({
-    full_name: '',
+    full_name: user.user_metadata?.full_name || '',
     location: '',
     birth_date: '',
     death_date: '',
@@ -36,7 +36,7 @@ export const OnboardingForm = ({ user, onComplete }: { user: any; onComplete: ()
         <div>
           <label className="block text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Full Name</label>
           <input required className="w-full p-4 bg-stone-50 border-none rounded-2xl focus:ring-2 focus:ring-teal-800" 
-            onChange={e => setFormData({...formData, full_name: e.target.value})} />
+            value={formData.full_name} onChange={e => setFormData({...formData, full_name: e.target.value})} />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -65,7 +65,7 @@ export const OnboardingForm = ({ user, onComplete }: { user: any; onComplete: ()
         </div>
 
         <button type="submit" className="w-full py-5 bg-teal-900 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-teal-800 transition-all shadow-lg">
-          Publish Legacy Profile
+          Create My Memorial Card
         </button>
       </form>
     </div>

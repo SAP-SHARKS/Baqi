@@ -9,7 +9,7 @@ import { AppView } from './types';
 // --- NEW IMPORTS ---
 import { supabase } from './services/supabaseClient';
 import { AuthModal } from './components/AuthModal';
-import { OnboardingForm } from './components/OnboardingForm';
+import { LegacySetup } from './components/LegacySetup';
 
 const App: React.FC = () => {
   // 1. STATE: Keep your existing view state, add the new Auth state
@@ -146,7 +146,7 @@ const handleBeginLegacy = () => {
         {currentView === AppView.DASHBOARD && (
           /* Check if the user has completed their profile (bio is not default) */
           !profile || profile.bio === 'Peace and blessings. I am just beginning to document my legacy.' ? (
-            <OnboardingForm
+            <LegacySetup
               user={session.user}
               onComplete={() => fetchProfile(session.user.id)}
             />

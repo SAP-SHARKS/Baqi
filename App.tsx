@@ -17,6 +17,8 @@ const App: React.FC = () => {
   
   // New Auth State
   const [session, setSession] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null); // To store the bio/location
+  const [loading, setLoading] = useState(true); // To prevent flickering
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   // 2. LOGIC: The "Check Login" Effect

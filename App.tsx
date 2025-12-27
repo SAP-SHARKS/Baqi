@@ -23,24 +23,19 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
 const fetchProfile = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single();
-        
-      if (error) {
-        console.error('Error fetching profile:', error);
-      } else {
-        setProfile(data);
-      }
-    } catch (error) {
-      console.error('Unexpected error:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const { data } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', userId)
+      .single();
+    setProfile(data);
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // 2. LOGIC: Auth & Profile Management
   useEffect(() => {
@@ -76,6 +71,14 @@ const handleBeginLegacy = () => {
   } else {
     setCurrentView(AppView.DASHBOARD); // Pass! Go to Dashboard
   }
+};
+
+  const handleLogout = async () => {
+  setLoading(true);
+  await supabase.auth.signOut();
+  setProfile(null);
+  setCurrentView(AppView.LANDING);
+  setLoading(false);
 };
   if (loading) return <div className="min-h-screen flex items-center justify-center font-serif text-teal-900">Preparing your legacy...</div>;
   return (

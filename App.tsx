@@ -14,7 +14,7 @@ const App: React.FC = () => {
   // 1. STATE: Keep your existing view state, add the new Auth state
   const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);
   const [selectedProfile, setSelectedProfile] = useState<any>(null);
-  
+
   // New Auth State
   const [session, setSession] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null); // To store the bio/location
@@ -47,11 +47,11 @@ const App: React.FC = () => {
       .select('*')
       .eq('id', userId)
       .single();
-    
+
     setProfile(data);
     setLoading(false);
   };
-  
+
   // 3. THE GATEKEEPER: This function decides if they can enter
   const handleBeginLegacy = () => {
     if (!session) {
@@ -78,24 +78,23 @@ const App: React.FC = () => {
             {[
               { id: AppView.LANDING, label: 'Your Home' },
               { id: AppView.FEATURES, label: 'Features' },
-              { id: AppView.DASHBOARD, label: 'Dashboard' }, 
+              { id: AppView.DASHBOARD, label: 'Dashboard' },
               { id: AppView.MEMORIAL_LIST, label: 'Memorials' },
             ].map(view => (
               <button
                 key={view.id}
                 // UPDATED: If they click Dashboard, we check if they are logged in first!
                 onClick={() => {
-                   if (view.id === AppView.DASHBOARD) {
-                     handleBeginLegacy();
-                   } else {
-                     setCurrentView(view.id);
-                   }
+                  if (view.id === AppView.DASHBOARD) {
+                    handleBeginLegacy();
+                  } else {
+                    setCurrentView(view.id);
+                  }
                 }}
-                className={`px-5 py-2 text-xs font-black uppercase tracking-widest rounded-full transition-all duration-300 ${
-                  currentView === view.id
-                    ? 'bg-teal-800 text-white shadow-md'
-                    : 'text-stone-500 hover:text-stone-900 hover:bg-white/50'
-                }`}
+                className={`px-5 py-2 text-xs font-black uppercase tracking-widest rounded-full transition-all duration-300 ${currentView === view.id
+                  ? 'bg-teal-800 text-white shadow-md'
+                  : 'text-stone-500 hover:text-stone-900 hover:bg-white/50'
+                  }`}
               >
                 {view.label}
               </button>
@@ -115,14 +114,14 @@ const App: React.FC = () => {
         {/* Pass the Gatekeeper function to LandingPage so the big button works too */}
         {currentView === AppView.LANDING && (
           <LandingPage onNavigate={(view) => {
-             if (view === AppView.DASHBOARD) {
-               handleBeginLegacy();
-             } else {
-               setCurrentView(view);
-             }
+            if (view === AppView.DASHBOARD) {
+              handleBeginLegacy();
+            } else {
+              setCurrentView(view);
+            }
           }} />
         )}
-        
+
         {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
         {currentView === AppView.DASHBOARD && <DashboardPage />}
         {currentView === AppView.MEMORIAL_LIST && <MemorialList onSelectProfile={(p) => { setSelectedProfile(p); setCurrentView(AppView.MEMORIAL_DEMO); }} />}
@@ -132,7 +131,7 @@ const App: React.FC = () => {
       {/* --- NEW ADDITION: The Login Popup --- */}
       {/* This sits at the bottom so it can pop up over everything else */}
       <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-      
+
     </div>
   );
 };

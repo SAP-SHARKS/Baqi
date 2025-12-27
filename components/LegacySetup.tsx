@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 
-const OnboardingForm = ({ user, onComplete }: { user: any; onComplete: () => void }) => {
+const LegacySetup = ({ user, onComplete }: { user: any; onComplete: () => void }) => {
   const [formData, setFormData] = useState({
     full_name: user.user_metadata?.full_name || '',
     location: '',
@@ -71,4 +71,4 @@ const OnboardingForm = ({ user, onComplete }: { user: any; onComplete: () => voi
     </div>
   );
 };
-export default OnboardingForm;
+export default LegacySetup;

@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [selectedProfile, setSelectedProfile] = useState<any>(null);
 
   // New Auth State
- const [profile, setProfile] = useState<any>(null);
+const [profile, setProfile] = useState<any>(null);
 const [loading, setLoading] = useState(true);
 
 const fetchProfile = async (userId: string) => {

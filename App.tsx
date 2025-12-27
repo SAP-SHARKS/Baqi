@@ -12,7 +12,7 @@ import { AuthModal } from './components/AuthModal';
 
 const App: React.FC = () => {
   // 1. STATE: Keep your existing view state, add the new Auth state
-  const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);
+  const [currentView, setCurrentView] = useState<AppView>(session ? AppView.DASHBOARD : AppView.LANDING);;
   const [selectedProfile, setSelectedProfile] = useState<any>(null);
 
   // New Auth State

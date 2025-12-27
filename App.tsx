@@ -7,7 +7,7 @@ import MemorialList from './components/MemorialList';
 import { AppView } from './types';
 
 // --- NEW IMPORTS ---
-import { supabase } from '../services/supabaseClient';
+import { supabase } from './services/supabaseClient';
 import { AuthModal } from './components/AuthModal';
 
 const App: React.FC = () => {

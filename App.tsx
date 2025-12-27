@@ -60,7 +60,7 @@ const App: React.FC = () => {
       setCurrentView(AppView.DASHBOARD); // Pass! Go to Dashboard
     }
   };
-
+  if (loading) return <div className="min-h-screen flex items-center justify-center font-serif text-teal-900">Preparing your legacy...</div>;
   return (
     <div className="min-h-screen bg-stone-50 selection:bg-teal-800 selection:text-white">
       {/* Navigation */}
@@ -123,7 +123,17 @@ const App: React.FC = () => {
         )}
 
         {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
-        {currentView === AppView.DASHBOARD && <DashboardPage />}
+        {currentView === AppView.DASHBOARD && (
+  /* Check if the user has completed their profile (bio is not default) */
+    !profile || profile.bio === 'Peace and blessings. I am just beginning to document my legacy.' ? (
+      <OnboardingForm 
+        user={session.user} 
+        onComplete={() => fetchProfile(session.user.id)} 
+      />
+    ) : (
+      <DashboardPage />
+    )
+  )}
         {currentView === AppView.MEMORIAL_LIST && <MemorialList onSelectProfile={(p) => { setSelectedProfile(p); setCurrentView(AppView.MEMORIAL_DEMO); }} />}
         {currentView === AppView.MEMORIAL_DEMO && <MemorialPage profile={selectedProfile} />}
       </main>

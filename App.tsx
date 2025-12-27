@@ -12,48 +12,14 @@ import { AuthModal } from './components/AuthModal';
 
 const App: React.FC = () => {
   // 1. STATE: Keep your existing view state, add the new Auth state
-  const [currentView, setCurrentView] = useState<AppView>(session ? AppView.DASHBOARD : AppView.LANDING);;
+  const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);
+  const [session, setSession] = useState<any>(null);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<any>(null);
 
   // New Auth State
-const [profile, setProfile] = useState<any>(null);
-const [loading, setLoading] = useState(true);
-
-const fetchProfile = async (userId: string) => {
-  const { data } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', userId)
-    .single();
-  setProfile(data);
-  setLoading(false); // Essential to stop the blank screen
-};
-
-  // 2. LOGIC: The "Check Login" Effect
-  useEffect(() => {
-  supabase.auth.onAuthStateChange((_event, session) => {
-    setSession(session);
-    if (session) {
-      fetchProfile(session.user.id);
-      // Ensure we switch away from Landing if they are already logged in
-      setCurrentView(AppView.DASHBOARD); 
-    } else {
-      setLoading(false);
-    }
-    });
-    }, []);
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (session) fetchProfile(session.user.id);
-      else {
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+  const [profile, setProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchProfile = async (userId: string) => {
     const { data } = await supabase
@@ -61,9 +27,43 @@ const fetchProfile = async (userId: string) => {
       .select('*')
       .eq('id', userId)
       .single();
-
     setProfile(data);
-    setLoading(false);
+    setLoading(false); // Essential to stop the blank screen
+  };
+
+  // 2. LOGIC: Auth & Profile Management
+  useEffect(() => {
+    // Check initial session on load
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (session) fetchProfile(session.user.id);
+      else setLoading(false);
+    });
+
+    // Listen for Auth changes (Login/Logout)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) {
+        fetchProfile(session.user.id);
+        // Automatically send them to dashboard if they just logged in
+        setCurrentView(AppView.DASHBOARD);
+      } else {
+        setProfile(null);
+        setLoading(false);
+        setCurrentView(AppView.LANDING);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // 3. THE GATEKEEPER: This function decides if they can enter
+  const handleBeginLegacy = () => {
+    if (!session) {
+      setIsAuthOpen(true);
+    } else {
+      setCurrentView(AppView.DASHBOARD);
+    }
   };
 
   // 3. THE GATEKEEPER: This function decides if they can enter
@@ -138,16 +138,16 @@ const fetchProfile = async (userId: string) => {
 
         {currentView === AppView.FEATURES && <FeaturesPage onNavigate={setCurrentView} />}
         {currentView === AppView.DASHBOARD && (
-  /* Check if the user has completed their profile (bio is not default) */
-    !profile || profile.bio === 'Peace and blessings. I am just beginning to document my legacy.' ? (
-      <OnboardingForm 
-        user={session.user} 
-        onComplete={() => fetchProfile(session.user.id)} 
-      />
-    ) : (
-      <DashboardPage />
-    )
-  )}
+          /* Check if the user has completed their profile (bio is not default) */
+          !profile || profile.bio === 'Peace and blessings. I am just beginning to document my legacy.' ? (
+            <OnboardingForm
+              user={session.user}
+              onComplete={() => fetchProfile(session.user.id)}
+            />
+          ) : (
+            <DashboardPage />
+          )
+        )}
         {currentView === AppView.MEMORIAL_LIST && <MemorialList onSelectProfile={(p) => { setSelectedProfile(p); setCurrentView(AppView.MEMORIAL_DEMO); }} />}
         {currentView === AppView.MEMORIAL_DEMO && <MemorialPage profile={selectedProfile} />}
       </main>

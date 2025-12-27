@@ -9,6 +9,7 @@ import { AppView } from './types';
 // --- NEW IMPORTS ---
 import { supabase } from './services/supabaseClient';
 import { AuthModal } from './components/AuthModal';
+import { OnboardingForm } from './components/OnboardingForm';
 
 const App: React.FC = () => {
   // 1. STATE: Keep your existing view state, add the new Auth state
@@ -21,14 +22,24 @@ const App: React.FC = () => {
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = async (userId: string) => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-    setProfile(data);
-    setLoading(false); // Essential to stop the blank screen
+const fetchProfile = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+        
+      if (error) {
+        console.error('Error fetching profile:', error);
+      } else {
+        setProfile(data);
+      }
+    } catch (error) {
+      console.error('Unexpected error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // 2. LOGIC: Auth & Profile Management

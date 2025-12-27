@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 
-const LegacySetup = ({ user, onComplete }: { user: any; onComplete: () => void }) => {
+// CHANGED: Added 'export' here and removed the 'export default' at the bottom
+export const LegacySetup = ({ user, onComplete }: { user: any; onComplete: () => void }) => {
   const [formData, setFormData] = useState({
     full_name: user.user_metadata?.full_name || '',
     location: '',
@@ -71,4 +72,3 @@ const LegacySetup = ({ user, onComplete }: { user: any; onComplete: () => void }
     </div>
   );
 };
-export default LegacySetup;
